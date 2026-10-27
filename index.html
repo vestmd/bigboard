@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BigBoard — станьте тестировщиком · deveniți tester</title>
+  <meta name="description" content="Клавиатура для Android с очень крупными клавишами — ищем тестировщиков. Tastatură pentru Android cu taste foarte mari — căutăm testeri.">
+  <meta name="theme-color" content="#3F51B5">
+  <link rel="canonical" href="https://vestmd.github.io/bigboard/">
+  <link rel="alternate" hreflang="ro" href="https://vestmd.github.io/bigboard/ro/">
+  <link rel="alternate" hreflang="ru" href="https://vestmd.github.io/bigboard/ru/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BigBoard">
+  <meta property="og:url" content="https://vestmd.github.io/bigboard/">
+  <meta property="og:title" content="BigBoard — крупные клавиши · taste mari">
+  <meta property="og:description" content="Ищем тестировщиков — бесплатно, 5 минут. Căutăm testeri — gratuit, 5 minute.">
+  <meta property="og:image" content="https://vestmd.github.io/bigboard/assets/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="BigBoard — клавиатура с крупными клавишами · tastatură cu taste mari">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://vestmd.github.io/bigboard/assets/og.jpg">
+
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-512.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>
+    // Сразу ведём на страницу на языке телефона; если язык не наш — показываем выбор.
+    (function () {
+      var langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']);
+      for (var i = 0; i < langs.length; i++) {
+        var l = String(langs[i]).toLowerCase();
+        if (l.indexOf('ro') === 0 || l.indexOf('mo') === 0) { location.replace('ro/' + location.hash); return; }
+        if (l.indexOf('ru') === 0) { location.replace('ru/' + location.hash); return; }
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="hero" style="min-height: 100vh;">
+    <div class="wrap">
+      <div class="topbar">
+        <span class="brand"><img src="assets/icon.svg" alt="" width="44" height="44">BigBoard</span>
+      </div>
+      <p class="eyebrow">Ищем тестировщиков · Căutăm testeri</p>
+      <h1>Крупные клавиши<br><span lang="ro">Taste mari</span></h1>
+      <p class="lead">Выберите язык · <span lang="ro">Alegeți limba</span></p>
+      <div class="chooser">
+        <a class="btn btn-amber" href="ro/" hreflang="ro" lang="ro">Română</a>
+        <a class="btn btn-amber" href="ru/" hreflang="ru" lang="ru">Русский</a>
+      </div>
+    </div>
+  </header>
+</body>
+</html>

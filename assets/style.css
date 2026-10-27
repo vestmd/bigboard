@@ -1,0 +1,353 @@
+/* Страница набора тестировщиков BigBoard. Крупный шрифт и высокий контраст — аудитория со слабым зрением. */
+:root {
+  --brand-1: #3F51B5;
+  --brand-2: #1565C0;
+  --amber: #FFCA28;
+  --amber-ink: #1A1400;
+  --bg: #F4F6FB;
+  --card: #FFFFFF;
+  --ink: #0F1530;
+  --muted: #434A66;
+  --line: #D9DFEE;
+  --soft: #E8EDFB;
+  --ok: #17803A;
+  --ok-bg: #E3F5E8;
+  --link: #1846B5;
+  --shadow: 0 10px 30px rgba(21, 40, 110, .10);
+  --radius: 22px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0C1122;
+    --card: #151C34;
+    --ink: #F3F5FB;
+    --muted: #B9C0D8;
+    --line: #2A3352;
+    --soft: #1D2747;
+    --ok: #5FD685;
+    --ok-bg: #12301E;
+    --link: #8DB2FF;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", Roboto, "Noto Sans", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+a { color: var(--link); }
+a:focus-visible, button:focus-visible { outline: 4px solid var(--amber); outline-offset: 3px; }
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+/* ── Шапка-герой ─────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 100%);
+  padding: 22px 0 64px;
+}
+
+.hero::after {
+  /* Декоративные «клавиши» на фоне */
+  content: "";
+  position: absolute;
+  right: -60px;
+  bottom: -80px;
+  width: 360px;
+  height: 360px;
+  background:
+    linear-gradient(#fff, #fff) 0 0 / 160px 160px no-repeat,
+    linear-gradient(#fff, #fff) 196px 0 / 160px 160px no-repeat,
+    linear-gradient(#fff, #fff) 0 196px / 160px 160px no-repeat,
+    linear-gradient(#fff, #fff) 196px 196px / 160px 160px no-repeat;
+  opacity: .07;
+  border-radius: 40px;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: .2px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand img { width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+
+.lang {
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 2px solid rgba(255,255,255,.55);
+  border-radius: 999px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang:hover { background: rgba(255,255,255,.12); }
+
+.eyebrow {
+  display: inline-block;
+  background: var(--amber);
+  color: var(--amber-ink);
+  font-weight: 700;
+  font-size: 17px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin: 0 0 18px;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 7vw, 54px);
+  line-height: 1.12;
+  margin: 0 0 18px;
+  letter-spacing: -.5px;
+  max-width: 14em;
+}
+
+.hero p.lead {
+  font-size: clamp(20px, 3.4vw, 24px);
+  margin: 0 0 28px;
+  max-width: 34em;
+  color: rgba(255,255,255,.94);
+}
+
+.hero .meta {
+  margin: 16px 0 0;
+  font-size: 18px;
+  color: rgba(255,255,255,.88);
+}
+
+/* ── Кнопки ──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 60px;
+  padding: 14px 28px;
+  border-radius: 16px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 21px;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  transition: transform .08s ease, filter .15s ease;
+}
+
+.btn:active { transform: translateY(1px) scale(.99); }
+.btn:hover { filter: brightness(1.06); }
+
+.btn-amber { background: var(--amber); color: var(--amber-ink); box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+.btn-blue { background: linear-gradient(135deg, var(--brand-1), var(--brand-2)); color: #fff; }
+.btn-ghost { background: var(--soft); color: var(--ink); }
+
+.btn svg { width: 26px; height: 26px; flex: none; }
+
+/* ── Секции ──────────────────────────────────────────────── */
+main { padding-bottom: 40px; }
+
+section { padding: 44px 0 8px; }
+
+h2 {
+  font-size: clamp(28px, 5vw, 36px);
+  line-height: 1.2;
+  margin: 0 0 12px;
+  letter-spacing: -.3px;
+}
+
+.intro { color: var(--muted); margin: 0 0 26px; font-size: 20px; }
+
+/* Шаги */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.step .num {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+}
+
+.step h3 { margin: 4px 0 8px; font-size: 25px; line-height: 1.25; }
+.step p { margin: 0 0 16px; color: var(--muted); }
+.step ul { margin: 0; padding-left: 22px; color: var(--muted); }
+.step li + li { margin-top: 10px; }
+.step b, .step strong { color: var(--ink); }
+
+.done-badge {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ok);
+}
+
+.step.done { border-color: var(--ok); }
+.step.done .num { background: var(--ok); }
+.step.done .done-badge { display: inline-flex; }
+
+/* Просьба про 14 дней */
+.callout {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 16px;
+  align-items: start;
+  background: var(--soft);
+  border-radius: var(--radius);
+  padding: 22px;
+  border-left: 8px solid var(--amber);
+}
+
+.callout .ico { font-size: 40px; line-height: 1; }
+.callout h3 { margin: 0 0 6px; font-size: 23px; }
+.callout p { margin: 0; color: var(--muted); }
+
+/* Возможности */
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+
+.feature {
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.feature .ico {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  background: var(--soft);
+  margin-bottom: 12px;
+}
+
+.feature h3 { margin: 0 0 6px; font-size: 22px; line-height: 1.25; }
+.feature p { margin: 0; color: var(--muted); font-size: 19px; }
+
+/* Вопросы */
+.faq { display: grid; gap: 12px; }
+
+.faq details {
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  padding: 0 20px;
+}
+
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  font-size: 21px;
+  padding: 18px 36px 18px 0;
+  position: relative;
+  min-height: 60px;
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--link);
+}
+
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 0 0 18px; color: var(--muted); }
+
+/* Поделиться */
+.share {
+  margin-top: 44px;
+  text-align: center;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 22px;
+  box-shadow: var(--shadow);
+}
+
+.share h2 { margin-bottom: 8px; }
+.share p { color: var(--muted); margin: 0 0 20px; }
+
+footer {
+  padding: 30px 0 46px;
+  color: var(--muted);
+  font-size: 18px;
+  text-align: center;
+}
+
+footer a { margin: 0 8px; }
+
+/* Выбор языка на корневой странице */
+.chooser { display: grid; gap: 16px; margin-top: 8px; max-width: 520px; }
+.chooser .btn { width: 100%; font-size: 24px; min-height: 72px; }
+
+@media (max-width: 560px) {
+  body { font-size: 19px; }
+  .step { grid-template-columns: 1fr; gap: 12px; padding: 20px; }
+  .step .num { width: 54px; height: 54px; font-size: 28px; border-radius: 16px; }
+  .step .btn, .hero .btn, .share .btn { width: 100%; }
+  .callout { grid-template-columns: 1fr; }
+  .topbar { margin-bottom: 30px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
